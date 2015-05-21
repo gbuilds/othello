@@ -24,6 +24,7 @@ describe "Othello" do
 
 		it "contains a board grid" do
 			expect(subject.board_grid.is_a?(Array)).to be true
+			p subject.board_grid
 		end
 
 	end
@@ -41,6 +42,9 @@ describe "Othello" do
 		subject { Space.new }
 
 		it "responds to proper methods" do
+			expect(subject).to respond_to(:x)
+			expect(subject).to respond_to(:y)
+			expect(subject).to respond_to(:piece)
 			expect(subject).to respond_to(:empty?)
 		end
 	end

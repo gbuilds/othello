@@ -6,11 +6,15 @@ end
 class Board
 	attr_accessor :rows, :cols, :board_grid
 
-	def initialize
-		@rows = 8
-		@cols = 8
-		@board_grid = Array.new(rows, 
-			Array.new(cols, Space.new))
+	def initialize(rows=8, cols=8)
+		@rows = rows
+		@cols = cols
+		@board_grid = Array.new(rows) do |row|
+					  	Array.new(cols) do |col|
+					  		Space.new(col, row)
+					  	end
+					  end
+
  	end
 end
 
@@ -27,12 +31,19 @@ class Piece
 end
 
 class Space
-		attr_accessor :piece
+		attr_accessor :piece, :x, :y
 
-	def initialize
+	def initialize(y=0, x=0)
+		@x = x
+		@y = y
 		@piece = nil
 	end
 
 	def empty?
+		@piece.nil
+	end
+
+	def occupied?
+		!empty?
 	end
 end
