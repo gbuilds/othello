@@ -1,7 +1,15 @@
 # Game file
 
 class Game
+	attr_accessor :board
+
+	# Constants / Rules of the Game
 	GAME_DIMENSIONS = { rows: 8, cols: 8 }
+
+	def initialize(board=Board.new)
+		@board = board
+		@board.setup_pieces
+	end
 
 	# return coordinates for player's move
 	# ABCDEFGH
@@ -35,7 +43,6 @@ class Board
 					  		space
 					  	end
 				  end
-		self.setup_pieces
  	end
 
  	def setup_pieces

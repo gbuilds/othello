@@ -11,6 +11,10 @@ describe "Othello" do
 	context "Game" do
 		subject { Game.new }
 
+		it "should contain a board" do
+			expect(subject.board.is_a?(Board)).to be true
+		end
+
 		# Get player's move
 		# Is the space empty?
 
@@ -61,6 +65,7 @@ describe "Othello" do
 		end
 
 		it "contains 4 starting pieces in the center spaces" do
+			subject.setup_pieces
 			expect(subject.board_grid[3][3].piece.color).to eq "black"
 			expect(subject.board_grid[3][4].piece.color).to eq "white"
 			expect(subject.board_grid[4][4].piece.color).to eq "black"
