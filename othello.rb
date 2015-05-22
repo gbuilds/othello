@@ -1,12 +1,14 @@
 # Game file
 
 class Game
+	GAME_DIMENSIONS = { rows: 8, cols: 8 }
 end
 
 class Board
 	attr_accessor :rows, :cols, :board_grid
 
-	def initialize(rows=8, cols=8)
+	def initialize(rows=Game::GAME_DIMENSIONS[:rows], 
+				   cols=Game::GAME_DIMENSIONS[:cols])
 		@rows = rows
 		@cols = cols
 		@board_grid = Array.new(rows) do |row|
@@ -40,7 +42,7 @@ class Space
 	end
 
 	def empty?
-		@piece.nil
+		@piece.nil?
 	end
 
 	def occupied?
